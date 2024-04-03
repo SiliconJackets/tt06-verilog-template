@@ -1,9 +1,9 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
+  title:        "SiliconJackets_Systolic_Array"      # Project title
+  author:       "SiliconJackets"      # Your name
+  discord:      "n/a"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "a tiny systolic array capable of row stationary operation"      # One line description of what your project does
   language:     "SystemVerilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     25000000       # Clock frequency in Hz (or 0 if not applicable)
 
