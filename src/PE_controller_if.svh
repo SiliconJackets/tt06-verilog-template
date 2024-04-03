@@ -20,6 +20,6 @@ interface PE_controller_if;
         output read_new_ifmap_val, read_new_filter_val, start_conv
     );
 
-endinterface;
+endinterface
 
 `endif

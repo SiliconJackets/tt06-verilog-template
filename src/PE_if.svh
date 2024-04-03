@@ -38,6 +38,6 @@ interface PE_if;
         output filter_i, ifmap_i
     );
 
-endinterface;
+endinterface
 
 `endif
