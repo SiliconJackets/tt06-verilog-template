@@ -184,9 +184,15 @@ module top(
     logic[9:0] writeIntermediate;
     logic overflowPos;
     logic overflowNeg;
+    logic [2:0] validOs;
+
+    assign validOs[2] = PED20.psum_valid_o;
+    assign validOs[1] = PED21.psum_valid_o;
+    assign validOs[0] = PED22.psum_valid_o;
+
 
     always_comb begin //select which PE is routed to output
-        casez({PED20.psum_valid_o, PED21.psum_valid_o, 1'b0})//PED22.psum_valid_o})
+        casez(validOs)
             3'b1??: begin
                 writeIntermediate = PED20.psum_o;
             end
