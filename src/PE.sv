@@ -59,7 +59,7 @@ module PE
         psum_o = psum_buffer;
     end
 
-    always_ff @(posedge clk_i) begin
+    always_ff @(posedge clk_i, negedge rstn_i) begin
         if (!rstn_i) begin
             //============ set all the registers to 0 =========
             counter <= '0;
