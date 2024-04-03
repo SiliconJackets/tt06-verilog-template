@@ -1,7 +1,7 @@
 `ifndef PE_IF
 `define PE_IF
 
-import sizes::*;
+//import sizes::*;
 
 interface PE_if;
 
