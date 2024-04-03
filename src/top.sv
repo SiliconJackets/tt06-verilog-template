@@ -186,7 +186,7 @@ module top(
     logic overflowNeg;
 
     always_comb begin //select which PE is routed to output
-        casez({PED20.psum_valid_o, PED21.psum_valid_o, PED22.psum_valid_o})
+        casez({PED20.psum_valid_o, PED21.psum_valid_o, 1'b0})//PED22.psum_valid_o})
             3'b1??: begin
                 writeIntermediate = PED20.psum_o;
             end
