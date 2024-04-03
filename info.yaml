@@ -17,7 +17,6 @@ project:
   source_files: 
     - "PE_controller_if.svh"   
     - "PE_if.svh"
-    - "sizes.svh"
     - "tt_um_SJ.sv"    
     - "top.sv"
     - "topLevelControl.sv"

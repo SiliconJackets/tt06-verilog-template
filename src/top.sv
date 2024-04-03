@@ -2,7 +2,6 @@
 `define TOP
 `include "PE_if.svh"
 `include "PE_controller_if.svh"
-import sizes::*;
 
 module top(
     input logic clk,

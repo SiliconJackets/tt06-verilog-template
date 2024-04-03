@@ -5,6 +5,11 @@ import sizes::*;
 
 interface PE_if;
 
+    localparam DATA_SIZE = 8; //in bits
+    localparam BIGGER_DATA_SIZE = 10;
+    localparam BIGGEST_FILTER_ROW_WIDTH = 3; //controls size of scratchpads in PEs
+    localparam counter_bits = 2; //floor(log_2(BIGGEST_FILTER_ROW_WIDTH))
+
     //Non-control
     logic signed [BIGGER_DATA_SIZE-1:0] psum_i;
     logic signed [BIGGER_DATA_SIZE-1:0] psum_o;

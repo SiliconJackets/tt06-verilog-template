@@ -2,7 +2,7 @@
 `define PE_TOP_IF
 
 
-import sizes::*;
+//import sizes::*;
 
 interface PE_controller_if;
 
