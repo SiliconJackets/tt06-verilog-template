@@ -15,8 +15,6 @@ project:
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files: 
-    - "PE_controller_if.svh"   
-    - "PE_if.svh"
     - "tt_um_SJ.sv"    
     - "top.sv"
     - "topLevelControl.sv"

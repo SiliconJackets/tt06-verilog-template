@@ -1,5 +1,3 @@
-`ifndef TOPLEVELCONTROL
-`define TOPLEVELCONTROL
 module topLevelControl (
     input logic clk,
     input logic nRST,
@@ -142,4 +140,3 @@ always_comb begin
 end
     
 endmodule
-`endif

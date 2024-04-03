@@ -1,8 +1,3 @@
-`ifndef TOP
-`define TOP
-`include "PE_if.svh"
-`include "PE_controller_if.svh"
-
 module top(
     input logic clk,
     input logic nRST,
@@ -29,178 +24,168 @@ module top(
 
     //PE Group 0
     //PE 0,0
-    logic [7:0] PE00psum_i;
-    assign PE00psum_i = (PERead[4]) ? readA : readB;
-    PE_if PED00();
-    PE_controller_if PEC0();
-    assign PED00.psum_i = PE00psum_i;
-    assign PED00.filter_i = readB;
-    assign PED00.ifmap_i = readA;
-
-    assign PEC0.read_new_ifmap_val = PERead[0];
-    assign PEC0.start_conv = PEStart[0];
-    assign PEC0.read_new_filter_val = filtRead[0];
+    logic [9:0] psum_o00;
 
     PE U2(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED00.PE),
-        ._controlsDiag(PEC0.PEDiag),
-        ._controlsRow(PEC0.PERow)
+        .psum_i({{3{readA[7]}}, readA[6:0]}),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[0]),
+        .read_new_ifmap_val(PERead[0]),
+        .start_conv(PEStart[0]),
+        .psum_o(psum_o00), 
+        .psum_valid_o()
     );
 
     //PE Group 1
     //PE 1,0
-    PE_if PED10();
-    PE_controller_if PEC1();
-    assign PED10.psum_i = PED00.psum_o;
-    assign PED10.filter_i = readB;
-    assign PED10.ifmap_i = readA;
 
-    assign PEC1.read_new_ifmap_val = PERead[1];
-    assign PEC1.start_conv = PEStart[1];
-    assign PEC1.read_new_filter_val = filtRead[1];
+    logic [9:0] psum_o10;
 
     PE U3(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED10.PE),
-        ._controlsDiag(PEC1.PEDiag),
-        ._controlsRow(PEC1.PERow)
+        .psum_i(psum_o00),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[1]),
+        .read_new_ifmap_val(PERead[1]),
+        .start_conv(PEStart[1]),
+        .psum_o(psum_o10), 
+        .psum_valid_o()
     );
 
     //PE 0,1
-    PE_if PED01();
-    assign PED01.psum_i = readB;
-    assign PED01.filter_i = readB;
-    assign PED01.ifmap_i = readA;
+    logic [9:0] psum_o01;
+
     PE U4(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED01.PE),
-        ._controlsDiag(PEC1.PEDiag),
-        ._controlsRow(PEC0.PERow)
+        .psum_i({{3{readB[7]}}, readB[6:0]}),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[0]),
+        .read_new_ifmap_val(PERead[1]),
+        .start_conv(PEStart[1]),
+        .psum_o(psum_o01), 
+        .psum_valid_o()
     );
 
     //PE Group 2
     //PE 2,0
-    PE_if PED20();
-    PE_controller_if PEC2();
-    assign PED20.psum_i = PED10.psum_o;
-    assign PED20.filter_i = readB;
-    assign PED20.ifmap_i = readA;
-
-    assign PEC2.read_new_ifmap_val = PERead[2];
-    assign PEC2.start_conv = PEStart[2];
-    assign PEC2.read_new_filter_val = filtRead[2];
+    logic [9:0] psum_o20;
 
     PE U5(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED20.PE),
-        ._controlsDiag(PEC2.PEDiag),
-        ._controlsRow(PEC2.PERow)
+        .psum_i(psum_o10),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[2]),
+        .read_new_ifmap_val(PERead[2]),
+        .start_conv(PEStart[2]),
+        .psum_o(psum_o20), 
+        .psum_valid_o(PENewOuput[2])
     );
 
     //PE 1,1
-    PE_if PED11();
-    assign PED11.psum_i = PED01.psum_o;
-    assign PED11.filter_i = readB;
-    assign PED11.ifmap_i = readA;
+    logic [9:0] psum_o11;
+
     PE U6(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED11.PE),
-        ._controlsDiag(PEC2.PEDiag),
-        ._controlsRow(PEC1.PERow)
+        .psum_i(psum_o01),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[1]),
+        .read_new_ifmap_val(PERead[2]),
+        .start_conv(PEStart[2]),
+        .psum_o(psum_o11), 
+        .psum_valid_o()
     );
 
     //PE 0,2
-    PE_if PED02();
-    assign PED02.psum_i = readB;
-    assign PED02.filter_i = readB;
-    assign PED02.ifmap_i = readA;
+    logic [9:0] psum_o02;
+
     PE U7(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED02.PE),
-        ._controlsDiag(PEC2.PEDiag),
-        ._controlsRow(PEC0.PERow)
+        .psum_i({{3{readB[7]}}, readB[6:0]}),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[0]),
+        .read_new_ifmap_val(PERead[2]),
+        .start_conv(PEStart[2]),
+        .psum_o(psum_o02), 
+        .psum_valid_o()
     );
 
     //PE Group 3
     //PE 2,1
-    PE_if PED21();
-    PE_controller_if PEC3();
-    assign PED21.psum_i = PED11.psum_o;
-    assign PED21.filter_i = readB;
-    assign PED21.ifmap_i = readA;
-
-    assign PEC3.read_new_ifmap_val = PERead[3];
-    assign PEC3.start_conv = PEStart[3];
-    assign PEC3.read_new_filter_val = '0;
+    logic [9:0] psum_o21;
 
     PE U8(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED21.PE),
-        ._controlsDiag(PEC3.PEDiag),
-        ._controlsRow(PEC2.PERow)
+        .psum_i(psum_o11),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[2]),
+        .read_new_ifmap_val(PERead[3]),
+        .start_conv(PEStart[3]),
+        .psum_o(psum_o21), 
+        .psum_valid_o(PENewOuput[1])
     );
 
     //PE 1,2
-    PE_if PED12();
-    assign PED12.psum_i = PED02.psum_o;
-    assign PED12.filter_i = readB;
-    assign PED12.ifmap_i = readA;
+    logic [9:0] psum_o12;
+
     PE U9(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED12.PE),
-        ._controlsDiag(PEC3.PEDiag),
-        ._controlsRow(PEC1.PERow)
+        .psum_i(psum_o02),
+        .filter_i(readB), 
+        .ifmap_i(readA), 
+        .read_new_filter_val(filtRead[1]),
+        .read_new_ifmap_val(PERead[3]),
+        .start_conv(PEStart[3]),
+        .psum_o(psum_o12), 
+        .psum_valid_o()
     );
 
     //PE Group 4
     //PE 2,2
-    PE_if PED22();
-    PE_controller_if PEC4();
-    assign PED22.psum_i = PED12.psum_o;
-    assign PED22.filter_i = readB;
-    assign PED22.ifmap_i = readB;
-
-    assign PEC4.read_new_ifmap_val = PERead[4];
-    assign PEC4.start_conv = PEStart[4];
-    assign PEC4.read_new_filter_val = '0;
+    logic [9:0] psum_o22;
 
     PE U10(
         .clk_i(clk), 
         .rstn_i(nRST),
-        ._if(PED22.PE),
-        ._controlsDiag(PEC4.PEDiag),
-        ._controlsRow(PEC2.PERow)
+        .psum_i(psum_o12),
+        .filter_i(readB), 
+        .ifmap_i(readB), 
+        .read_new_filter_val(filtRead[2]),
+        .read_new_ifmap_val(PERead[4]),
+        .start_conv(PEStart[4]),
+        .psum_o(psum_o22), 
+        .psum_valid_o(PENewOuput[0])
     );
 
     logic[9:0] writeIntermediate;
     logic overflowPos;
     logic overflowNeg;
-    logic [2:0] validOs;
-
-    assign validOs[2] = PED20.psum_valid_o;
-    assign validOs[1] = PED21.psum_valid_o;
-    assign validOs[0] = PED22.psum_valid_o;
-
 
     always_comb begin //select which PE is routed to output
-        casez(validOs)
+        casez({PENewOuput})
             3'b1??: begin
-                writeIntermediate = PED20.psum_o;
+                writeIntermediate = psum_o20;
             end
             3'b01?: begin
-                writeIntermediate = PED20.psum_o;
+                writeIntermediate = psum_o21;
             end
             3'b001: begin
-                writeIntermediate = PED20.psum_o;
+                writeIntermediate = psum_o22;
             end
             default: begin
                 writeIntermediate = '0;
@@ -221,4 +206,3 @@ module top(
     end
 
 endmodule
-`endif
