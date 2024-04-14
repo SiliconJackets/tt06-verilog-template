@@ -10,6 +10,17 @@
 
 # Here are some of the variables you may want to change:
 
+# macro vars
+set ::env(EXTRA_LEFS) {/content/top.lef}
+set ::env(EXTRA_GDS_FILES) {/content/systolic_test.gds}
+set ::env(EXTRA_LIBS) {/content/top__tt_v1.8_25C_Nominal_25_func.lib}
+set ::env(FP_PDN_MACRO_HOOKS) {DUT vccd1 vssd1 vccd1 vssd1}
+set ::env(MACRO_PLACEMENT_CFG) {/content/macro_placement.cfg}
+set ::env(MAGIC_DRC_USE_GDS) {false}
+set ::env(QUIT_ON_MAGIC_DRC) {false}
+set ::env(VDD_NETS) {vccd1}
+set ::env(GND_NETS) {vssd1}
+
 # PL_TARGET_DENSITY - You can increase this if Global Placement fails with error GPL-0302.
 # Users have reported that values up to 0.8 worked well for them.
 set ::env(PL_TARGET_DENSITY) 0.9
