@@ -13,7 +13,7 @@
 # macro vars
 set ::env(EXTRA_LEFS) "/content/top.lef"
 set ::env(EXTRA_GDS_FILES) "/content/systolic_test.gds"
-set ::env(EXTRA_LIBS) "/content/"top__tt_v1.8_25C_Nominal_25_func.lib"
+set ::env(EXTRA_LIBS) "/content/top__tt_v1.8_25C_Nominal_25_func.lib"
 set ::env(FP_PDN_MACRO_HOOKS) {DUT vccd1 vssd1 vccd1 vssd1}
 set ::env(MACRO_PLACEMENT_CFG) "/content/macro_placement.cfg"
 set ::env(MAGIC_DRC_USE_GDS) {false}
