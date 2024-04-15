@@ -12,8 +12,8 @@
 
 # macro vars
 set ::env(EXTRA_LEFS) [glob $::env(DESIGN_DIR)/content/top.lef]
-set ::env(EXTRA_GDS_FILES) [glob $::env(DESIGN_DIR)/content/systolic_test.gds]
-set ::env(EXTRA_LIBS) [glob $::env(DESIGN_DIR)/content/top__tt_v1.8_25C_Nominal_25_func.lib]
+set ::env(EXTRA_GDS_FILES) [glob $::env(DESIGN_DIR)/content/top.gds]
+set ::env(EXTRA_LIBS) [glob $::env(DESIGN_DIR)/content/top__tt_v1.8_25.lib]
 set ::env(FP_PDN_MACRO_HOOKS) [list top vccd1 vssd1 vccd1 vssd1]
 set ::env(MACRO_PLACEMENT_CFG) [glob $::env(DESIGN_DIR)/content/macro_placement.cfg]
 set ::env(MAGIC_DRC_USE_GDS) 0
