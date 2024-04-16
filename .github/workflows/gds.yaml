@@ -23,8 +23,8 @@ jobs:
         uses: TinyTapeout/tt-gds-action/custom_gds@tt06
         with:
           top_module: top
-          gds_path: content/top.gds
-          lef_path: content/top.lef
+          gds_path: src/content/top.gds
+          lef_path: src/content/top.lef
           verilog_path: src/project.v
   
   precheck:
