@@ -25,7 +25,7 @@ jobs:
           top_module: top
           gds_path: src/content/top.gds
           lef_path: src/content/top.lef
-          verilog_path: src/project.v
+          verilog_path: src/top.sv
   
   precheck:
     needs: gds
