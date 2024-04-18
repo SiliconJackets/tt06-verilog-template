@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This is a systolic array capable of matrix multiplication and 2D convolution using 9 processing elements
 
 ## How to test
 
-Explain how to use your project
+this project needs to be connected to an external FPGA to feed in the data to compute on
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+FPGA connected to all 24 IO
