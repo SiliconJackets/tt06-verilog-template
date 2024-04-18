@@ -17,8 +17,8 @@ project:
   source_files: 
     - "tt_um_SJ.sv"    
     - "top.sv"
-#    - "topLevelControl.sv"
-#    - "PE.sv"
+    - "topLevelControl.sv"
+    - "PE.sv"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
