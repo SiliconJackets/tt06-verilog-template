@@ -11,16 +11,16 @@
 # Here are some of the variables you may want to change:
 
 # macro vars
-set ::env(EXTRA_LEFS) [glob $::env(DESIGN_DIR)/content/top.lef]
-set ::env(EXTRA_GDS_FILES) [glob $::env(DESIGN_DIR)/content/top.gds]
-set ::env(EXTRA_LIBS) [glob $::env(DESIGN_DIR)/content/top__tt_v1.8_25C_Nominal_25_func.lib]
-set ::env(FP_PDN_MACRO_HOOKS) [list DUT vccd1 vssd1 vccd1 vssd1]
-set ::env(MACRO_PLACEMENT_CFG) [glob $::env(DESIGN_DIR)/content/macro_placement.cfg]
-set ::env(VERILOG_FILES_BLACKBOX): [glob $::env(DESIGN_DIR)/top.sv]
-set ::env(MAGIC_DRC_USE_GDS) 0
-set ::env(QUIT_ON_MAGIC_DRC) 0
-set ::env(VDD_NETS) {vccd1}
-set ::env(GND_NETS) {vssd1}
+#set ::env(EXTRA_LEFS) [glob $::env(DESIGN_DIR)/content/top.lef]
+#set ::env(EXTRA_GDS_FILES) [glob $::env(DESIGN_DIR)/content/top.gds]
+#set ::env(EXTRA_LIBS) [glob $::env(DESIGN_DIR)/content/top__tt_v1.8_25C_Nominal_25_func.lib]
+#set ::env(FP_PDN_MACRO_HOOKS) [list DUT vccd1 vssd1 vccd1 vssd1]
+#set ::env(MACRO_PLACEMENT_CFG) [glob $::env(DESIGN_DIR)/content/macro_placement.cfg]
+#set ::env(VERILOG_FILES_BLACKBOX): [glob $::env(DESIGN_DIR)/top.sv]
+#set ::env(MAGIC_DRC_USE_GDS) 0
+#set ::env(QUIT_ON_MAGIC_DRC) 0
+#set ::env(VDD_NETS) {vccd1}
+#set ::env(GND_NETS) {vssd1}
 
 # PL_TARGET_DENSITY - You can increase this if Global Placement fails with error GPL-0302.
 # Users have reported that values up to 0.8 worked well for them.
