@@ -9,6 +9,9 @@ module tt_um_SJ(
     input  wire       rst_n     // reset_n - low to reset
 );
 
+    logic [9:0] temp;
+
+    assign uo_out = temp[7:0];
     /*assign uio_oe  = 0;
     assign uio_out  = 0;
 
@@ -30,7 +33,7 @@ module tt_um_SJ(
         .read_new_ifmap_val(uio_in[0]),
         .start(ui_in[1]),
         .mode(uio_in[2]),
-		.psum_o(uo_out), 
+		.psum_o(temp), 
         .psum_valid_o(),
 		.end_OS(uio_in[1]),
 		.filter_o(uio_out),
