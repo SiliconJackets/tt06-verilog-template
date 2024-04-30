@@ -1,4 +1,4 @@
-module PE
+module tt_um_PE
     (
         input logic clk_i, rstn_i,
         input logic signed [7:0] filter_i, 
